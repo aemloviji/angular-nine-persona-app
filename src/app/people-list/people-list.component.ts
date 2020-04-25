@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../person';
+import { PeopleService } from '../people.service';
 
 @Component({
   selector: 'app-people-list',
@@ -8,20 +9,16 @@ import { Person } from '../person';
       <li *ngFor="let p of people">
         {{ p.name }}
       </li>
-    </ul>    
+    </ul>
   `,
   styleUrls: ['./people-list.component.scss']
 })
 export class PeopleListComponent implements OnInit {
-  people: Person[] = [
-    { name: "Person Adam", height: 181, weight: 77 },
-    { name: "Endy Pavel", height: 196, weight: 95 },
-    { name: "Martin Rober", height: 175, weight: 85 },
-  ]
+  people: Person[] = [];
 
-  constructor() { }
+  constructor(private peopleService: PeopleService) { }
 
   ngOnInit(): void {
+    this.people = this.peopleService.getAll();
   }
-
 }
