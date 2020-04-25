@@ -1,8 +1,7 @@
 <ul>
     <li *ngFor="let p of people">
-        <a href="#" (click)="selectPerson(p)">
+        <a [routerLink]="['/persons', p.id]">
             {{p.name}}
         </a>
     </li>
 </ul>
-<app-person-details [person]="selectedPerson"></app-person-details>
