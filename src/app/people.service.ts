@@ -18,4 +18,11 @@ export class PeopleService {
   get(id: number): Person {
     return People.find(p => p.id === id);
   }
+
+  save(person: Person) {
+    const originalPerson = this.get(person.id);
+    if (originalPerson) {
+      Object.assign(originalPerson, person);
+    }
+  }
 }
