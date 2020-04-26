@@ -1,3 +1,6 @@
+<section *ngIf="isLoading && !errorMessage">
+    Retrieving data...
+</section>
 <ul>
     <li *ngFor="let p of people">
         <a [routerLink]="['/persons', p.id]">
@@ -5,3 +8,6 @@
         </a>
     </li>
 </ul>
+<section *ngIf="errorMessage">
+    {{errorMessage}}
+</section>

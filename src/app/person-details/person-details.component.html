@@ -1,12 +1,17 @@
-<section>
+<section *ngIf="isLoading && !errorMessage">
+    Retrieving data...
+</section>
+<section *ngIf="errorMessage">
+    {{errorMessage}}
+</section>
+<section *ngIf="!isLoading">
     <h2>You selected: {{person.name}}</h2>
     <h3>Description</h3>
     <p>
         {{person.name}} weights {{person.weight}} and is {{person.height}} tall.
     </p>
 </section>
-
-<section>
+<section *ngIf="!isLoading">
     <form #personForm="ngForm" (ngSubmit)="savePersonDetails()">
         <div>
             <label for="name">Name: </label>
@@ -40,6 +45,6 @@
 
         <button type="submit" [disabled]="!personForm.form.valid">Save</button>
     </form>
-</section>
 
-<button (click)="goBackToPeopleList()">Back to people list</button>
+    <button (click)="goBackToPeopleList()">Back to people list</button>
+</section>

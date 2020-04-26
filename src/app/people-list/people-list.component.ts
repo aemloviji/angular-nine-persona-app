@@ -9,10 +9,17 @@ import { PeopleService } from '../people.service';
 })
 export class PeopleListComponent implements OnInit {
   people: Person[] = [];
+  errorMessage = '';
+  isLoading = true;
 
   constructor(private peopleService: PeopleService) { }
 
   ngOnInit(): void {
-    this.people = this.peopleService.getAll();
+    this.peopleService
+      .getAll()
+      .subscribe(
+        p => this.people = p,
+        e => this.errorMessage = e,
+        () => this.isLoading = false);
   }
 }

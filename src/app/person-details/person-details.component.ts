@@ -14,6 +14,8 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
   professions: string[] = ['jedi', 'bounty hunter', 'princess', 'sith lord']
   person: Person;
   routerSubscription: Subscription;
+  errorMessage = '';
+  isLoading = true;
 
   constructor(
     private peopleService: PeopleService,
@@ -23,7 +25,12 @@ export class PersonDetailsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.routerSubscription = this.route.params.subscribe(params => {
       const id = Number.parseInt(params.id);
-      this.person = this.peopleService.get(id);
+      this.peopleService
+        .get(id)
+        .subscribe(
+          p => this.person = p,
+          e => this.errorMessage = e,
+          () => this.isLoading = false);
     });
   }
 

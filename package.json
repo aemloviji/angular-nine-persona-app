@@ -1,6 +1,8 @@
 {
   "name": "ng-persona-get-started",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Angular 9 Project - Self learning",
+  "author": "Elvin Asadov",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
