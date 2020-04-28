@@ -1,13 +1,23 @@
 <section *ngIf="isLoading && !errorMessage">
     Retrieving data...
 </section>
-<ul>
-    <li *ngFor="let p of people">
-        <a [routerLink]="['/persons', p.id]">
-            {{p.name}}
-        </a>
-    </li>
-</ul>
 <section *ngIf="errorMessage">
     {{errorMessage}}
+</section>
+<section *ngIf="!isLoading && !errorMessage">
+    <mat-card>
+        <mat-card-title>Choose your favorite Star Wars persona.</mat-card-title>
+        <mat-card-content>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let person of people; last as last">
+                    {{person.name}}
+                    <a mat-icon-button color="primary" [ngStyle]="{'margin-left':'8px'}"
+                        [routerLink]="['/persons', person.id]">
+                        <mat-icon>visibility</mat-icon>
+                    </a>
+                    <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
 </section>

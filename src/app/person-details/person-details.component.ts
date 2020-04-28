@@ -8,7 +8,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-person-details',
   templateUrl: './person-details.component.html',
-  styles: []
+  styleUrls: ['./person-details.component.scss']
 })
 export class PersonDetailsComponent implements OnInit, OnDestroy {
   professions: string[] = ['jedi', 'bounty hunter', 'princess', 'sith lord']

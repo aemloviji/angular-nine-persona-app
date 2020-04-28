@@ -1,4 +1,10 @@
-<h1>
-  Welcome to {{ title }}!
-  <router-outlet></router-outlet>
-</h1>
+<section class="app">
+  <mat-toolbar color="primary" class="mat-elevation-z10">
+    Persona App - created during self learning of Angular 9.
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</section>
